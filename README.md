@@ -1,4 +1,4 @@
-= Redmine Status Report plugin
+# Redmine Status Report plugin
 
 Plugin is intended to show status statistics for the issue.
 

@@ -1,0 +1,7 @@
+.tabs-views > .tab {
+    display: none;
+}
+
+.tabs-views > .tab.selected {
+    display: block;
+}

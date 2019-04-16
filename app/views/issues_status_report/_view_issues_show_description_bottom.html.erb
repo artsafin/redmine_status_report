@@ -1,0 +1,60 @@
+<div class="tabs" data-view-container="redmine_status_report_tabs_views">
+  <ul>
+    <li>
+      <a href="javascript:;" class="tab" data-tab="redmine_status_report_statistics">
+        <%= l(:redmine_status_report_statistics) %>
+      </a>
+    </li>
+    <li>
+      <a href="javascript:;" class="tab" data-tab="redmine_status_report_all">
+        <%= l(:redmine_status_report_all) %>
+      </a>
+    </li>
+  </ul>
+</div>
+<div id="redmine_status_report_tabs_views" class="tabs-views">
+  <div class="tab redmine_status_report_statistics">
+    <table>
+      <thead>
+      <tr>
+        <th><%= l(:redmine_status_report_status_name) %></th>
+        <th><%= l(:redmine_status_report_transition_secs) %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% RedmineStatusReportHelper.load_stats(@issue).each do |row| %>
+        <tr>
+          <td><%= row['status_name'] %></td>
+          <td>
+            <%= RedmineStatusReportHelper.secs_to_duration_string(row['total_status_secs']) || l(:redmine_status_report_still) %>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+  <div class="tab redmine_status_report_all">
+    <table>
+      <thead>
+      <tr>
+        <th><%= l(:redmine_status_report_status_name) %></th>
+        <th><%= l(:redmine_status_report_transition_date) %></th>
+        <th><%= l(:redmine_status_report_transition_secs) %></th>
+      </tr>
+      </thead>
+      <tbody>
+      <% RedmineStatusReportHelper.load_all(@issue).each do |row| %>
+        <tr>
+          <td><%= row['status_name'] %></td>
+          <td><%= row['since'].strftime "%d %b %Y %R" %></td>
+          <td>
+          <span title="<%= row['since'] %> &ndash; <%= row['till'] %>">
+            <%= RedmineStatusReportHelper.secs_to_duration_string(row['transition_age_secs']) || l(:redmine_status_report_still) %>
+          </span>
+          </td>
+        </tr>
+      <% end %>
+      </tbody>
+    </table>
+  </div>
+</div>

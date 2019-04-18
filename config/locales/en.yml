@@ -2,7 +2,9 @@
 en:
   redmine_status_report_statistics: Status statistics
   redmine_status_report_all: All status transitions
+  redmine_status_report_user: Changed by
   redmine_status_report_transition_date: Occured on
   redmine_status_report_status_name: Status
   redmine_status_report_transition_secs: Lasted for
-  redmine_status_report_still: Current
+  redmine_status_report_still: now
+  redmine_status_report_timeline: Timeline

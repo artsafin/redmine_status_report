@@ -1,11 +1,12 @@
-$(document).on('.tabs .tab[data-tab]').click((e) => {
+$(document).on('click', '.tabs .tab[data-tab]', (e) => {
+    e.preventDefault();
+
     const clicked = $(e.target),
         tabsContainer = clicked.parents('.tabs[data-view-container]'),
         viewsContainer = $('#' + tabsContainer.data('viewContainer')),
         tabName = clicked.data('tab');
 
     if (!viewsContainer) {
-        e.preventDefault();
         return;
     }
 
@@ -14,6 +15,4 @@ $(document).on('.tabs .tab[data-tab]').click((e) => {
 
     viewsContainer.find('.tab').removeClass('selected');
     viewsContainer.find(`.tab.${tabName}`).addClass('selected');
-
-    e.preventDefault();
 });
